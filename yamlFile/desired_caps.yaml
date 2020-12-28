@@ -1,0 +1,7 @@
+platformName: Android
+platformVersion: 8.0.0
+deviceName: UYT0217A10002648
+appPackage: com.ihealthlabs.MyVitalsPro
+appActivity: com.ihealth.business.common.welcome.WelcomeActivity
+ip: 127.0.0.1
+port: 4723
