@@ -1,11 +1,11 @@
 import logging
 import unittest
 
-import nose
 from nose.tools import *
 
 from appium_function.init_driver import init_driver
 from pages.login_page import LoginPage
+from pages.setting_page import SettingPage
 
 
 class Login(unittest.TestCase):
@@ -16,23 +16,22 @@ class Login(unittest.TestCase):
         driver = init_driver()
         cls.driver = driver
 
-    def setUp(self):
-        self.loginPage = LoginPage(self.driver)
-        print("=============Test Start=============")
+    @classmethod
+    def tearDownClass(cls):
+        pass
 
-    @nose.allure.feature('登录')
-    @nose.allure.story('登录')
-    def test_Login(self):
+    def setUp(self):
+        print("=============Test Start=============")
+        self.loginPage = LoginPage(self.driver)
+        self.settingPage = SettingPage(self.driver)
+
+    def test_login(self):
+        print("=============test_login Start=============")
         self.loginPage.login_to_home_page('test003@gmail.com', '123456')
 
     def tearDown(self):
-        pass
+        self.settingPage.logout()
         print("=============Test End=============")
-
-    @classmethod
-    def tearDownClass(cls):
-    #     cls.diver.quit()
-        pass
 
 
 if __name__ == '__main__':

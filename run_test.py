@@ -3,18 +3,15 @@ import threading
 import unittest
 import time
 
-import HtmlTestRunner
-
 # 脚本路径
-from HtmlTestRunner import HTMLTestRunner
+from HTMLTestRunner_cn import HTMLTestRunner
 
-path = os.path.dirname(os.path.realpath(__file__))
+
 # test_cases用例
-case_path = os.path.join(path, 'test_cases')
 
 
 # 执行用例，返回discover
-def add_case(rule="test*.py"):
+def add_case(case_path, rule="test_*.py"):
     """
     discover方法查找目录下要执行的测试用例脚本
     .discover方法里面有3个参数：
@@ -23,21 +20,24 @@ def add_case(rule="test*.py"):
     top_level_dir：这个是顶级目录的名称，一般默认等于None
     """
     # 如果不存在这个testCases文件夹，就自动创建一个
-    if not os.path.exists(case_path): os.mkdir(case_path)
+    path = os.path.dirname(os.path.realpath(__file__))
+
+    if not os.path.exists(os.path.join(path, case_path)): os.mkdir(case_path)
     # 定义discover方法的参数
-    discover = unittest.defaultTestLoader.discover(case_path, pattern=rule, top_level_dir=None)
+    discover = unittest.defaultTestLoader.discover(os.path.join(path, case_path), pattern=rule, top_level_dir=None)
     return discover
 
 
 # 执行报告
 def run_case(discover):
+    path = os.path.dirname(os.path.realpath(__file__))
     report_path = os.path.join(path, 'report')
     now = time.strftime("%Y-%m-%d-%H-%M-%S")  # 最新的报告
     report_abspath = os.path.join(report_path, now + "result.html")  # 报告位置
     rp = open(report_abspath, "wb")
-    runner = HTMLTestRunner(stream=rp, title="测试报告", description="用例执行的情况")
-
+    runner = HTMLTestRunner(title="测试报告", description="执行情况：", stream=rp)
     runner.run(discover)
     return report_abspath
 
 
+run_case(add_case(case_path="test_cases/basic_function"))
