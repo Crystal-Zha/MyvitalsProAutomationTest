@@ -8,6 +8,7 @@ def init_driver():
 
     desired_caps['platformName'] = 'Android'
     desired_caps['platformVersion'] = '10'
+    # desired_caps['platformVersion'] = '9'
     # 设备号
     desired_caps['deviceName'] = 'R5CNA08QTSV'
     # desired_caps['deviceName'] = 'UYT0217A10002648'

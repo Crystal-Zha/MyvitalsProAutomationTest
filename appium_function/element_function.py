@@ -26,6 +26,10 @@ class BaseFun(object):
         element.clear()
         element.send_keys(value)
 
+    #重写获取文本的方法
+    # def get_text(self):
+    #
+
     # 重写click方法
     def click(self, loc):
         element = self.find_element(loc)

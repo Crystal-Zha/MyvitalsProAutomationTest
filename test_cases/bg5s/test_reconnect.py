@@ -1,14 +1,13 @@
 import logging
+import time
 import unittest
-
-from nose.tools import *
-
 from appium_function.init_driver import init_driver
+from pages.devices_connection_page import DeviceConnectionPage
+from pages.home_page import HomePage
 from pages.login_page import LoginPage
-from pages.setting_page import SettingPage
 
 
-class Login(unittest.TestCase):
+class BG5SConnection(unittest.TestCase):
     log = logging.getLogger(__name__)
 
     @classmethod
@@ -23,14 +22,20 @@ class Login(unittest.TestCase):
     def setUp(self):
         print("=============Test Start=============")
         self.loginPage = LoginPage(self.driver)
-        self.settingPage = SettingPage(self.driver)
+        self.homePage = HomePage(self.driver)
+        self.deviceConnectionPage = DeviceConnectionPage(self.driver)
 
     def test_login(self):
-        print("=============test_login Start=============")
         self.loginPage.login_to_home_page('test003@gmail.com', '123456')
+        self.homePage.click_mac_name()
+        # for i in range(500):
+        #     self.homePage.click_mac_name()
+        #     time.sleep(10)
+        #     self.deviceConnectionPage.click_close_button()
+        #     time.sleep(2)
 
     def tearDown(self):
-        self.settingPage.logout()
+        pass
         print("=============Test End=============")
 
 

@@ -40,4 +40,4 @@ def run_case(discover):
     return report_abspath
 
 
-run_case(add_case(case_path="test_cases/basic_function"))
+run_case(add_case(case_path="test_cases/basic_function/login_module"))
