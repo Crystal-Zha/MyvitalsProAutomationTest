@@ -3,3 +3,11 @@
 /common/__init__.py
 /test_cases/basic_function/__init__.py
 /test_cases/basic_function/login_module/__init__.py
+/pages/__init__.py
+/test_cases/basic_function/manual_input/__init__.py
+/test_cases/basic_function/setting_module/__init__.py
+/test_cases/devices_function/__init__.py
+/test_cases/devices_function/bg5s/__init__.py
+/test_cases/devices_function/bp5/__init__.py
+/report/
+/logging_module/__init__.py

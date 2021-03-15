@@ -1,14 +1,14 @@
-import logging
-import time
+import logging_module
 import unittest
+
 from appium_function.init_driver import init_driver
-from pages.devices_connection_page import DeviceConnectionPage
-from pages.home_page import HomePage
 from pages.login_page import LoginPage
+from pages.setting_page import SettingPage
 
 
-class BG5SConnection(unittest.TestCase):
-    log = logging.getLogger(__name__)
+class GoalsFunction(unittest.TestCase):
+    driver = None
+    log = logging_module.getLogger(__name__)
 
     @classmethod
     def setUpClass(cls):
@@ -18,25 +18,22 @@ class BG5SConnection(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):
         pass
+        # cls.driver.quit()
 
     def setUp(self):
         print("=============Test Start=============")
         self.loginPage = LoginPage(self.driver)
-        self.homePage = HomePage(self.driver)
-        self.deviceConnectionPage = DeviceConnectionPage(self.driver)
+        self.settingPage = SettingPage(self.driver)
 
-    def test_login(self):
+    def test_goals_function(self):
         self.loginPage.login_to_home_page('test003@gmail.com', '123456')
-        self.homePage.click_mac_name()
-        # for i in range(500):
-        #     self.homePage.click_mac_name()
-        #     time.sleep(10)
-        #     self.deviceConnectionPage.click_close_button()
-        #     time.sleep(2)
+        self.settingPage.click_setting()
+        self.settingPage.click_goals()
+        self.settingPage.input_target_weight()
 
     def tearDown(self):
-        pass
         print("=============Test End=============")
+        self.settingPage.logout()
 
 
 if __name__ == '__main__':

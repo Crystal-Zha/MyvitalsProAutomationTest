@@ -143,12 +143,6 @@ class SettingPage(BaseFun):
     # cancel
     dialog_cancel_loc = (By.ID, 'com.ihealthlabs.MyVitalsPro:id/tv_left')
 
-
-
-
-
-
-
     def click_setting(self):
         self.click(self.setting_loc)
 
@@ -210,8 +204,13 @@ class SettingPage(BaseFun):
         self.click(self.mgdL_loc)
 
     def select_glucose_unit_to_mmolL(self):
-        self.click(self.mmolL_loc)
+        self.driver.find_element_by_name('mmol/L').click()
 
+    def click_save_glucose_range(self):
+        self.click(self.save_target_glucose_loc)
+
+    def çlick_save_units(self):
+        self.click(self.save_units_loc)
 
     # 登出
     def logout(self):
@@ -227,8 +226,7 @@ class SettingPage(BaseFun):
 
     def input_target_weight(self):
         self.click(self.target_weight_loc)
-        target_weight = random.randint(1,100)
+        target_weight = random.randint(1, 100)
         self.send_keys(self.target_weight_loc, target_weight)
         self.click(self.save_loc)
         time.sleep(2)
-

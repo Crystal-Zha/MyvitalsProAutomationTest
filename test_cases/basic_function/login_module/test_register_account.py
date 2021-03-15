@@ -1,33 +1,11 @@
-import logging
+import logging_module
 import time
 import unittest
-
 from selenium.webdriver.support.wait import WebDriverWait
-
-from appium_function.init_driver import init_driver
-from pages.login_page import LoginPage
-from pages.register_page import RegisterPage
-from pages.setting_page import SettingPage
+from common import my_test
 
 
-class RegisterAccount(unittest.TestCase):
-    driver = None
-    log = logging.getLogger(__name__)
-
-    @classmethod
-    def setUpClass(cls):
-        driver = init_driver()
-        cls.driver = driver
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.driver.quit()
-
-    def setUp(self):
-        print("=============Test Start=============")
-        self.loginPage = LoginPage(self.driver)
-        self.registerPage = RegisterPage(self.driver)
-        self.settingPage = SettingPage(self.driver)
+class RegisterAccount(my_test.MyTest):
 
     def test_register_new_account_fail(self):
         self.loginPage.click_register_account()
@@ -83,12 +61,9 @@ class RegisterAccount(unittest.TestCase):
         self.registerPage.click_check_box()
         self.registerPage.click_ok()
         # 等待app主页出现
-        WebDriverWait(self.driver, 10).until(lambda x: x.find_element_by_id('com.ihealthlabs.MyVitalsPro:id/tv_my_devices'))
+        WebDriverWait(self.driver, 10).until(
+            lambda x: x.find_element_by_id('com.ihealthlabs.MyVitalsPro:id/tv_my_devices'))
         self.settingPage.logout()
-
-    def tearDown(self):
-        print("=============Test End=============")
-        pass
 
 
 if __name__ == '__main__':

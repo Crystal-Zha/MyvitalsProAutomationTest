@@ -28,3 +28,13 @@ class DeviceInfoPage(BaseFun):
     ok_loc = (By.ID, 'com.ihealthlabs.MyVitalsPro:id/tv_right')
     # cancel
     cancel_loc = (By.ID, 'com.ihealthlabs.MyVitalsPro:id/tv_left')
+
+    def click_forgor_it_button(self):
+        self.click(self.forgot_it_loc)
+
+    def click_ok(self):
+        self.click(self.ok_loc)
+
+    def disconnected_device(self):
+        self.click_forgor_it_button()
+        self.click_ok()

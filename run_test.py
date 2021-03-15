@@ -3,7 +3,7 @@ import threading
 import unittest
 import time
 
-# 脚本路径
+
 from HTMLTestRunner_cn import HTMLTestRunner
 
 
@@ -40,4 +40,6 @@ def run_case(discover):
     return report_abspath
 
 
-run_case(add_case(case_path="test_cases/basic_function/login_module"))
+# 配置运行哪些测试用例
+run_case(add_case(case_path="test_cases/devices_function/bg5s"))
+
