@@ -1,0 +1,14 @@
+#login_page
+user_name = 'com.ihealthlabs.MyVitalsPro:id/et_user_name'
+password = 'com.ihealthlabs.MyVitalsPro:id/et_user_password'
+login_bn = 'com.ihealthlabs.MyVitalsPro:id/btn_login'
+forgot_password = 'com.ihealthlabs.MyVitalsPro:id/tv_forgot_password'
+register_account = 'com.ihealthlabs.MyVitalsPro:id/btn_register'
+password_error_message ='com.ihealthlabs.MyVitalsPro:id/tv_message'
+ok_bn= 'com.ihealthlabs.MyVitalsPro:id/tv_left'
+
+
+#home_page
+my_devices =  'com.ihealthlabs.MyVitalsPro:id/tv_my_devices'
+select_new_device = 'com.ihealthlabs.MyVitalsPro:id/tv_add_device'
+add_button = 'com.ihealthlabs.MyVitalsPro:id/iv_add_device'
